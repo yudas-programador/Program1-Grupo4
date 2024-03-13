@@ -11,6 +11,6 @@ namespace CapaNegocio
 {
     public class Accionesdatabase
     {
-        public DbTurismoentityDataContext dbturicontext = new DbTurismoentityDataContext ();
+        public DbTurismoentityDataContext dbturicontext = new DbTurismoentityDataContext (); // connectionString
     }
 }

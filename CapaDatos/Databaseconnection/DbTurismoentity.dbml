@@ -1,1 +1,234 @@
-﻿
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Express_Tour" Class="DbTurismoentityDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost\SQLEXPRESS;Initial Catalog=Express_Tour;Integrated Security=True;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="CapaDatos.Properties.Settings" SettingsPropertyName="Express_TourConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TD_Cancelaciones" Member="TD_Cancelaciones">
+    <Type Name="TD_Cancelaciones">
+      <Column Name="ID_Cancelaciones" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_Paquete" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Proveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Association Name="TM_Cliente_TD_Cancelaciones" Member="TM_Cliente" ThisKey="ID_Usuario" OtherKey="ID_Usuario" Type="TM_Cliente" IsForeignKey="true" />
+      <Association Name="TM_Paquete_TD_Cancelaciones" Member="TM_Paquete" ThisKey="ID_Paquete" OtherKey="ID_Paquete" Type="TM_Paquete" IsForeignKey="true" />
+      <Association Name="TM_Proveedores_TD_Cancelaciones" Member="TM_Proveedores" ThisKey="ID_Proveedor" OtherKey="ID_Proveedor" Type="TM_Proveedores" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TM_Tours" Member="TM_Tours">
+    <Type Name="TM_Tours">
+      <Column Name="ID_Tour" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(70) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Ubicacion" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="duracion" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Costo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="TM_Tours_TD_Proyecto_x_Tour" Member="TD_Proyecto_x_Tour" ThisKey="ID_Tour" OtherKey="ID_Tour" Type="TD_Proyecto_x_Tour" />
+      <Association Name="TM_Tours_TD_Reservaciones" Member="TD_Reservaciones" ThisKey="ID_Tour" OtherKey="ID_Tour" Type="TD_Reservaciones" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TD_DescripcionPaquete" Member="TD_DescripcionPaquete">
+    <Type Name="TD_DescripcionPaquete">
+      <Column Name="ID_DescripcionPaquete" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_Paquete" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Precio" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="TM_Cliente_TD_DescripcionPaquete" Member="TM_Cliente" ThisKey="ID_Usuario" OtherKey="ID_Usuario" Type="TM_Cliente" IsForeignKey="true" />
+      <Association Name="TM_Paquete_TD_DescripcionPaquete" Member="TM_Paquete" ThisKey="ID_Paquete" OtherKey="ID_Paquete" Type="TM_Paquete" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TD_DescripcionPaquetes" Member="TD_DescripcionPaquetes">
+    <Type Name="TD_DescripcionPaquetes">
+      <Column Name="ID_DescripcionPaquete" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_Paquete" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Precio" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TD_Factura" Member="TD_Factura">
+    <Type Name="TD_Factura">
+      <Column Name="ID_Factura" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Paquete" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Cuentas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cantidad_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha_Vencimiento" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="ITBIS" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Monto_Total" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="TM_Cliente_TD_Factura" Member="TM_Cliente" ThisKey="ID_Usuario" OtherKey="ID_Usuario" Type="TM_Cliente" IsForeignKey="true" />
+      <Association Name="TM_Cuentas_TD_Factura" Member="TM_Cuentas" ThisKey="ID_Cuentas" OtherKey="ID_Cuentas" Type="TM_Cuentas" IsForeignKey="true" />
+      <Association Name="TM_Paquete_TD_Factura" Member="TM_Paquete" ThisKey="ID_Paquete" OtherKey="ID_Paquete" Type="TM_Paquete" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TD_Horario" Member="TD_Horario">
+    <Type Name="TD_Horario">
+      <Column Name="ID_Horario" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_Empleado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Hora_Entrada" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="Hora_Salida" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Association Name="TM_Empleado_TD_Horario" Member="TM_Empleado" ThisKey="ID_Empleado" OtherKey="ID_Empleado" Type="TM_Empleado" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TD_Ingresos" Member="TD_Ingresos">
+    <Type Name="TD_Ingresos">
+      <Column Name="ID_Ingresos" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_proyecto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Proveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Ingresos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="TM_Proveedores_TD_Ingresos" Member="TM_Proveedores" ThisKey="ID_Proveedor" OtherKey="ID_Proveedor" Type="TM_Proveedores" IsForeignKey="true" />
+      <Association Name="TM_Proyecto_TD_Ingresos" Member="TM_Proyecto" ThisKey="ID_proyecto" OtherKey="ID_Proyecto" Type="TM_Proyecto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TD_Paquete_X_Proveedor" Member="TD_Paquete_X_Proveedor">
+    <Type Name="TD_Paquete_X_Proveedor">
+      <Column Name="ID_Paquete_X_Proveedor" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_Proveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Paquete" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="TM_Paquete_TD_Paquete_X_Proveedor" Member="TM_Paquete" ThisKey="ID_Paquete" OtherKey="ID_Paquete" Type="TM_Paquete" IsForeignKey="true" />
+      <Association Name="TM_Proveedores_TD_Paquete_X_Proveedor" Member="TM_Proveedores" ThisKey="ID_Proveedor" OtherKey="ID_Proveedor" Type="TM_Proveedores" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TD_Presupuesto" Member="TD_Presupuesto">
+    <Type Name="TD_Presupuesto">
+      <Column Name="ID_Presupuesto" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Paquete" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cantidad_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Total" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="TM_Cliente_TD_Presupuesto" Member="TM_Cliente" ThisKey="ID_Usuario" OtherKey="ID_Usuario" Type="TM_Cliente" IsForeignKey="true" />
+      <Association Name="TM_Paquete_TD_Presupuesto" Member="TM_Paquete" ThisKey="ID_Paquete" OtherKey="ID_Paquete" Type="TM_Paquete" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TD_Proveedor_x_Proyecto" Member="TD_Proveedor_x_Proyecto">
+    <Type Name="TD_Proveedor_x_Proyecto">
+      <Column Name="ID_Proveedor_x_Proyecto" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_Proveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_proyecto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(70) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="TM_Proveedores_TD_Proveedor_x_Proyecto" Member="TM_Proveedores" ThisKey="ID_Proveedor" OtherKey="ID_Proveedor" Type="TM_Proveedores" IsForeignKey="true" />
+      <Association Name="TM_Proyecto_TD_Proveedor_x_Proyecto" Member="TM_Proyecto" ThisKey="ID_proyecto" OtherKey="ID_Proyecto" Type="TM_Proyecto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TD_Proyecto_x_Tour" Member="TD_Proyecto_x_Tour">
+    <Type Name="TD_Proyecto_x_Tour">
+      <Column Name="ID_Proyecto_x_Tour" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_proyecto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Tour" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="TM_Tours_TD_Proyecto_x_Tour" Member="TM_Tours" ThisKey="ID_Tour" OtherKey="ID_Tour" Type="TM_Tours" IsForeignKey="true" />
+      <Association Name="TM_Proyecto_TD_Proyecto_x_Tour" Member="TM_Proyecto" ThisKey="ID_proyecto" OtherKey="ID_Proyecto" Type="TM_Proyecto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TD_Rentabilidad" Member="TD_Rentabilidad">
+    <Type Name="TD_Rentabilidad">
+      <Column Name="ID_Rentabilidad" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_proyecto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Proveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="TM_Cliente_TD_Rentabilidad" Member="TM_Cliente" ThisKey="ID_Usuario" OtherKey="ID_Usuario" Type="TM_Cliente" IsForeignKey="true" />
+      <Association Name="TM_Proveedores_TD_Rentabilidad" Member="TM_Proveedores" ThisKey="ID_Proveedor" OtherKey="ID_Proveedor" Type="TM_Proveedores" IsForeignKey="true" />
+      <Association Name="TM_Proyecto_TD_Rentabilidad" Member="TM_Proyecto" ThisKey="ID_proyecto" OtherKey="ID_Proyecto" Type="TM_Proyecto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TD_Reservaciones" Member="TD_Reservaciones">
+    <Type Name="TD_Reservaciones">
+      <Column Name="ID_Reservaciones" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_Paquete" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Tour" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Notificaciones" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="TM_Tours_TD_Reservaciones" Member="TM_Tours" ThisKey="ID_Tour" OtherKey="ID_Tour" Type="TM_Tours" IsForeignKey="true" />
+      <Association Name="TM_Cliente_TD_Reservaciones" Member="TM_Cliente" ThisKey="ID_Usuario" OtherKey="ID_Usuario" Type="TM_Cliente" IsForeignKey="true" />
+      <Association Name="TM_Paquete_TD_Reservaciones" Member="TM_Paquete" ThisKey="ID_Paquete" OtherKey="ID_Paquete" Type="TM_Paquete" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TM_Cliente" Member="TM_Cliente">
+    <Type Name="TM_Cliente">
+      <Column Name="ID_Usuario" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(70) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="VarChar(79) NOT NULL" CanBeNull="false" />
+      <Column Name="Cedula" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Correo" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Contraseña" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="TM_Cliente_TD_Cancelaciones" Member="TD_Cancelaciones" ThisKey="ID_Usuario" OtherKey="ID_Usuario" Type="TD_Cancelaciones" />
+      <Association Name="TM_Cliente_TD_DescripcionPaquete" Member="TD_DescripcionPaquete" ThisKey="ID_Usuario" OtherKey="ID_Usuario" Type="TD_DescripcionPaquete" />
+      <Association Name="TM_Cliente_TD_Factura" Member="TD_Factura" ThisKey="ID_Usuario" OtherKey="ID_Usuario" Type="TD_Factura" />
+      <Association Name="TM_Cliente_TD_Presupuesto" Member="TD_Presupuesto" ThisKey="ID_Usuario" OtherKey="ID_Usuario" Type="TD_Presupuesto" />
+      <Association Name="TM_Cliente_TD_Rentabilidad" Member="TD_Rentabilidad" ThisKey="ID_Usuario" OtherKey="ID_Usuario" Type="TD_Rentabilidad" />
+      <Association Name="TM_Cliente_TD_Reservaciones" Member="TD_Reservaciones" ThisKey="ID_Usuario" OtherKey="ID_Usuario" Type="TD_Reservaciones" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TM_Cuentas" Member="TM_Cuentas">
+    <Type Name="TM_Cuentas">
+      <Column Name="ID_Cuentas" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Debito" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="Credito" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="Empresariales" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Association Name="TM_Cuentas_TD_Factura" Member="TD_Factura" ThisKey="ID_Cuentas" OtherKey="ID_Cuentas" Type="TD_Factura" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TM_Empleado" Member="TM_Empleado">
+    <Type Name="TM_Empleado">
+      <Column Name="ID_Empleado" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(70) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="VarChar(130) NOT NULL" CanBeNull="false" />
+      <Column Name="Cedula" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Codigo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="TM_Empleado_TD_Horario" Member="TD_Horario" ThisKey="ID_Empleado" OtherKey="ID_Empleado" Type="TD_Horario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TM_Paquete" Member="TM_Paquete">
+    <Type Name="TM_Paquete">
+      <Column Name="ID_Paquete" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Premium" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="Basico" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Association Name="TM_Paquete_TD_Cancelaciones" Member="TD_Cancelaciones" ThisKey="ID_Paquete" OtherKey="ID_Paquete" Type="TD_Cancelaciones" />
+      <Association Name="TM_Paquete_TD_DescripcionPaquete" Member="TD_DescripcionPaquete" ThisKey="ID_Paquete" OtherKey="ID_Paquete" Type="TD_DescripcionPaquete" />
+      <Association Name="TM_Paquete_TD_Factura" Member="TD_Factura" ThisKey="ID_Paquete" OtherKey="ID_Paquete" Type="TD_Factura" />
+      <Association Name="TM_Paquete_TD_Paquete_X_Proveedor" Member="TD_Paquete_X_Proveedor" ThisKey="ID_Paquete" OtherKey="ID_Paquete" Type="TD_Paquete_X_Proveedor" />
+      <Association Name="TM_Paquete_TD_Presupuesto" Member="TD_Presupuesto" ThisKey="ID_Paquete" OtherKey="ID_Paquete" Type="TD_Presupuesto" />
+      <Association Name="TM_Paquete_TD_Reservaciones" Member="TD_Reservaciones" ThisKey="ID_Paquete" OtherKey="ID_Paquete" Type="TD_Reservaciones" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TM_Proveedores" Member="TM_Proveedores">
+    <Type Name="TM_Proveedores">
+      <Column Name="ID_Proveedor" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nombre_de_empresa" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="Servicio" Type="System.String" DbType="VarChar(70)" CanBeNull="true" />
+      <Column Name="Ubicacion" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="TM_Proveedores_TD_Cancelaciones" Member="TD_Cancelaciones" ThisKey="ID_Proveedor" OtherKey="ID_Proveedor" Type="TD_Cancelaciones" />
+      <Association Name="TM_Proveedores_TD_Ingresos" Member="TD_Ingresos" ThisKey="ID_Proveedor" OtherKey="ID_Proveedor" Type="TD_Ingresos" />
+      <Association Name="TM_Proveedores_TD_Paquete_X_Proveedor" Member="TD_Paquete_X_Proveedor" ThisKey="ID_Proveedor" OtherKey="ID_Proveedor" Type="TD_Paquete_X_Proveedor" />
+      <Association Name="TM_Proveedores_TD_Proveedor_x_Proyecto" Member="TD_Proveedor_x_Proyecto" ThisKey="ID_Proveedor" OtherKey="ID_Proveedor" Type="TD_Proveedor_x_Proyecto" />
+      <Association Name="TM_Proveedores_TD_Rentabilidad" Member="TD_Rentabilidad" ThisKey="ID_Proveedor" OtherKey="ID_Proveedor" Type="TD_Rentabilidad" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TM_Proyecto" Member="TM_Proyecto">
+    <Type Name="TM_Proyecto">
+      <Column Name="ID_Proyecto" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(70) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Informacion" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="costo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="TM_Proyecto_TD_Ingresos" Member="TD_Ingresos" ThisKey="ID_Proyecto" OtherKey="ID_proyecto" Type="TD_Ingresos" />
+      <Association Name="TM_Proyecto_TD_Proveedor_x_Proyecto" Member="TD_Proveedor_x_Proyecto" ThisKey="ID_Proyecto" OtherKey="ID_proyecto" Type="TD_Proveedor_x_Proyecto" />
+      <Association Name="TM_Proyecto_TD_Proyecto_x_Tour" Member="TD_Proyecto_x_Tour" ThisKey="ID_Proyecto" OtherKey="ID_proyecto" Type="TD_Proyecto_x_Tour" />
+      <Association Name="TM_Proyecto_TD_Rentabilidad" Member="TD_Rentabilidad" ThisKey="ID_Proyecto" OtherKey="ID_proyecto" Type="TD_Rentabilidad" />
+    </Type>
+  </Table>
+</Database>

@@ -47,11 +47,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DbTurismoentity.dbml</DependentUpon>
     </Compile>
-    <Compile Include="Express_TourDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Express_TourDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -72,17 +67,6 @@
     </None>
     <None Include="Databaseconnection\DbTurismoentity.dbml.layout">
       <DependentUpon>DbTurismoentity.dbml</DependentUpon>
-    </None>
-    <None Include="Express_TourDataSet.xsc">
-      <DependentUpon>Express_TourDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="Express_TourDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Express_TourDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Express_TourDataSet.xss">
-      <DependentUpon>Express_TourDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

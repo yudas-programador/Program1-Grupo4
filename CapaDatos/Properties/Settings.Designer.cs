@@ -33,5 +33,16 @@ namespace CapaDatos.Properties {
                 return ((string)(this["Express_TourConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost\\SQLEXPRESS;Initial Catalog=Express_Tour;Integrated Security" +
+            "=True;Encrypt=True;TrustServerCertificate=True")]
+        public string Express_TourConnectionString1 {
+            get {
+                return ((string)(this["Express_TourConnectionString1"]));
+            }
+        }
     }
 }
