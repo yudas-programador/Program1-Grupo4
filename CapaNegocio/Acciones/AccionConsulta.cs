@@ -13,6 +13,7 @@ namespace CapaNegocio.Acciones
 {
     public class AccionConsulta : Accionesdatabase
     {
+        #region Listados Genericos
         public List<TM_Proveedores> Listcategory() 
         {
             return dbturicontext.TM_Proveedores.ToList();
@@ -29,9 +30,14 @@ namespace CapaNegocio.Acciones
         {
             return dbturicontext .TM_Tours.ToList();
         }
+        #endregion
 
         #region filtros relacionales 
 
+        public List <TM_Proveedores> _getListProvedoresType(int typeID)
+        {
+            return dbturicontext.TM_Proveedores.Where(x => x.ID_Proveedor == typeID).ToList();
+        }
 
 
 
