@@ -87,6 +87,18 @@ namespace CapaDatos.Databaseconnection
     partial void InsertTM_Proyecto(TM_Proyecto instance);
     partial void UpdateTM_Proyecto(TM_Proyecto instance);
     partial void DeleteTM_Proyecto(TM_Proyecto instance);
+    partial void InsertTM_Usuario(TM_Usuario instance);
+    partial void UpdateTM_Usuario(TM_Usuario instance);
+    partial void DeleteTM_Usuario(TM_Usuario instance);
+    partial void InsertTD_Login(TD_Login instance);
+    partial void UpdateTD_Login(TD_Login instance);
+    partial void DeleteTD_Login(TD_Login instance);
+    partial void InsertTD_RolexUsuarios(TD_RolexUsuarios instance);
+    partial void UpdateTD_RolexUsuarios(TD_RolexUsuarios instance);
+    partial void DeleteTD_RolexUsuarios(TD_RolexUsuarios instance);
+    partial void InsertTM_Roles(TM_Roles instance);
+    partial void UpdateTM_Roles(TM_Roles instance);
+    partial void DeleteTM_Roles(TM_Roles instance);
     #endregion
 		
 		public DbTurismoentityDataContext() : 
@@ -268,6 +280,46 @@ namespace CapaDatos.Databaseconnection
 			get
 			{
 				return this.GetTable<TM_Proyecto>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TM_Usuario> TM_Usuario
+		{
+			get
+			{
+				return this.GetTable<TM_Usuario>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TD_Login> TD_Login
+		{
+			get
+			{
+				return this.GetTable<TD_Login>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TD_RolexUsuarios> TD_RolexUsuarios
+		{
+			get
+			{
+				return this.GetTable<TD_RolexUsuarios>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TM_Roles> TM_Roles
+		{
+			get
+			{
+				return this.GetTable<TM_Roles>();
+			}
+		}
+		
+		public System.Data.Linq.Table<vw_Usuarios> vw_Usuarios
+		{
+			get
+			{
+				return this.GetTable<vw_Usuarios>();
 			}
 		}
 	}
@@ -5236,6 +5288,1400 @@ namespace CapaDatos.Databaseconnection
 		{
 			this.SendPropertyChanging();
 			entity.TM_Proyecto = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TM_Usuario")]
+	public partial class TM_Usuario : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idUser;
+		
+		private string _UserName;
+		
+		private string _PasswordUser;
+		
+		private string _createBy;
+		
+		private string _modifyBy;
+		
+		private string _cancelBy;
+		
+		private System.Nullable<System.DateTime> _fecCreate;
+		
+		private System.Nullable<System.DateTime> _fecModify;
+		
+		private System.Nullable<System.DateTime> _fecCancel;
+		
+		private System.Nullable<bool> _flagActivo;
+		
+		private EntitySet<TD_Login> _TD_Login;
+		
+		private EntitySet<TD_RolexUsuarios> _TD_RolexUsuarios;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidUserChanging(int value);
+    partial void OnidUserChanged();
+    partial void OnUserNameChanging(string value);
+    partial void OnUserNameChanged();
+    partial void OnPasswordUserChanging(string value);
+    partial void OnPasswordUserChanged();
+    partial void OncreateByChanging(string value);
+    partial void OncreateByChanged();
+    partial void OnmodifyByChanging(string value);
+    partial void OnmodifyByChanged();
+    partial void OncancelByChanging(string value);
+    partial void OncancelByChanged();
+    partial void OnfecCreateChanging(System.Nullable<System.DateTime> value);
+    partial void OnfecCreateChanged();
+    partial void OnfecModifyChanging(System.Nullable<System.DateTime> value);
+    partial void OnfecModifyChanged();
+    partial void OnfecCancelChanging(System.Nullable<System.DateTime> value);
+    partial void OnfecCancelChanged();
+    partial void OnflagActivoChanging(System.Nullable<bool> value);
+    partial void OnflagActivoChanged();
+    #endregion
+		
+		public TM_Usuario()
+		{
+			this._TD_Login = new EntitySet<TD_Login>(new Action<TD_Login>(this.attach_TD_Login), new Action<TD_Login>(this.detach_TD_Login));
+			this._TD_RolexUsuarios = new EntitySet<TD_RolexUsuarios>(new Action<TD_RolexUsuarios>(this.attach_TD_RolexUsuarios), new Action<TD_RolexUsuarios>(this.detach_TD_RolexUsuarios));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUser", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idUser
+		{
+			get
+			{
+				return this._idUser;
+			}
+			set
+			{
+				if ((this._idUser != value))
+				{
+					this.OnidUserChanging(value);
+					this.SendPropertyChanging();
+					this._idUser = value;
+					this.SendPropertyChanged("idUser");
+					this.OnidUserChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(30)")]
+		public string UserName
+		{
+			get
+			{
+				return this._UserName;
+			}
+			set
+			{
+				if ((this._UserName != value))
+				{
+					this.OnUserNameChanging(value);
+					this.SendPropertyChanging();
+					this._UserName = value;
+					this.SendPropertyChanged("UserName");
+					this.OnUserNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PasswordUser", DbType="NVarChar(50)")]
+		public string PasswordUser
+		{
+			get
+			{
+				return this._PasswordUser;
+			}
+			set
+			{
+				if ((this._PasswordUser != value))
+				{
+					this.OnPasswordUserChanging(value);
+					this.SendPropertyChanging();
+					this._PasswordUser = value;
+					this.SendPropertyChanged("PasswordUser");
+					this.OnPasswordUserChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_createBy", DbType="NVarChar(25)")]
+		public string createBy
+		{
+			get
+			{
+				return this._createBy;
+			}
+			set
+			{
+				if ((this._createBy != value))
+				{
+					this.OncreateByChanging(value);
+					this.SendPropertyChanging();
+					this._createBy = value;
+					this.SendPropertyChanged("createBy");
+					this.OncreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_modifyBy", DbType="NVarChar(25)")]
+		public string modifyBy
+		{
+			get
+			{
+				return this._modifyBy;
+			}
+			set
+			{
+				if ((this._modifyBy != value))
+				{
+					this.OnmodifyByChanging(value);
+					this.SendPropertyChanging();
+					this._modifyBy = value;
+					this.SendPropertyChanged("modifyBy");
+					this.OnmodifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cancelBy", DbType="NVarChar(25)")]
+		public string cancelBy
+		{
+			get
+			{
+				return this._cancelBy;
+			}
+			set
+			{
+				if ((this._cancelBy != value))
+				{
+					this.OncancelByChanging(value);
+					this.SendPropertyChanging();
+					this._cancelBy = value;
+					this.SendPropertyChanged("cancelBy");
+					this.OncancelByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecCreate", DbType="Date")]
+		public System.Nullable<System.DateTime> fecCreate
+		{
+			get
+			{
+				return this._fecCreate;
+			}
+			set
+			{
+				if ((this._fecCreate != value))
+				{
+					this.OnfecCreateChanging(value);
+					this.SendPropertyChanging();
+					this._fecCreate = value;
+					this.SendPropertyChanged("fecCreate");
+					this.OnfecCreateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecModify", DbType="Date")]
+		public System.Nullable<System.DateTime> fecModify
+		{
+			get
+			{
+				return this._fecModify;
+			}
+			set
+			{
+				if ((this._fecModify != value))
+				{
+					this.OnfecModifyChanging(value);
+					this.SendPropertyChanging();
+					this._fecModify = value;
+					this.SendPropertyChanged("fecModify");
+					this.OnfecModifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecCancel", DbType="Date")]
+		public System.Nullable<System.DateTime> fecCancel
+		{
+			get
+			{
+				return this._fecCancel;
+			}
+			set
+			{
+				if ((this._fecCancel != value))
+				{
+					this.OnfecCancelChanging(value);
+					this.SendPropertyChanging();
+					this._fecCancel = value;
+					this.SendPropertyChanged("fecCancel");
+					this.OnfecCancelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_flagActivo", DbType="Bit")]
+		public System.Nullable<bool> flagActivo
+		{
+			get
+			{
+				return this._flagActivo;
+			}
+			set
+			{
+				if ((this._flagActivo != value))
+				{
+					this.OnflagActivoChanging(value);
+					this.SendPropertyChanging();
+					this._flagActivo = value;
+					this.SendPropertyChanged("flagActivo");
+					this.OnflagActivoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TM_Usuario_TD_Login", Storage="_TD_Login", ThisKey="idUser", OtherKey="idUser")]
+		public EntitySet<TD_Login> TD_Login
+		{
+			get
+			{
+				return this._TD_Login;
+			}
+			set
+			{
+				this._TD_Login.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TM_Usuario_TD_RolexUsuarios", Storage="_TD_RolexUsuarios", ThisKey="idUser", OtherKey="idUser")]
+		public EntitySet<TD_RolexUsuarios> TD_RolexUsuarios
+		{
+			get
+			{
+				return this._TD_RolexUsuarios;
+			}
+			set
+			{
+				this._TD_RolexUsuarios.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_TD_Login(TD_Login entity)
+		{
+			this.SendPropertyChanging();
+			entity.TM_Usuario = this;
+		}
+		
+		private void detach_TD_Login(TD_Login entity)
+		{
+			this.SendPropertyChanging();
+			entity.TM_Usuario = null;
+		}
+		
+		private void attach_TD_RolexUsuarios(TD_RolexUsuarios entity)
+		{
+			this.SendPropertyChanging();
+			entity.TM_Usuario = this;
+		}
+		
+		private void detach_TD_RolexUsuarios(TD_RolexUsuarios entity)
+		{
+			this.SendPropertyChanging();
+			entity.TM_Usuario = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TD_Login")]
+	public partial class TD_Login : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idLogin;
+		
+		private int _idUser;
+		
+		private string _url_login;
+		
+		private string _createBy;
+		
+		private string _modifyBy;
+		
+		private string _cancelBy;
+		
+		private System.Nullable<System.DateTime> _fecCreate;
+		
+		private System.Nullable<System.DateTime> _fecModify;
+		
+		private System.Nullable<System.DateTime> _fecCancel;
+		
+		private System.Nullable<bool> _flagActivo;
+		
+		private EntityRef<TM_Usuario> _TM_Usuario;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidLoginChanging(int value);
+    partial void OnidLoginChanged();
+    partial void OnidUserChanging(int value);
+    partial void OnidUserChanged();
+    partial void Onurl_loginChanging(string value);
+    partial void Onurl_loginChanged();
+    partial void OncreateByChanging(string value);
+    partial void OncreateByChanged();
+    partial void OnmodifyByChanging(string value);
+    partial void OnmodifyByChanged();
+    partial void OncancelByChanging(string value);
+    partial void OncancelByChanged();
+    partial void OnfecCreateChanging(System.Nullable<System.DateTime> value);
+    partial void OnfecCreateChanged();
+    partial void OnfecModifyChanging(System.Nullable<System.DateTime> value);
+    partial void OnfecModifyChanged();
+    partial void OnfecCancelChanging(System.Nullable<System.DateTime> value);
+    partial void OnfecCancelChanged();
+    partial void OnflagActivoChanging(System.Nullable<bool> value);
+    partial void OnflagActivoChanged();
+    #endregion
+		
+		public TD_Login()
+		{
+			this._TM_Usuario = default(EntityRef<TM_Usuario>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idLogin", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idLogin
+		{
+			get
+			{
+				return this._idLogin;
+			}
+			set
+			{
+				if ((this._idLogin != value))
+				{
+					this.OnidLoginChanging(value);
+					this.SendPropertyChanging();
+					this._idLogin = value;
+					this.SendPropertyChanged("idLogin");
+					this.OnidLoginChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUser", DbType="Int NOT NULL")]
+		public int idUser
+		{
+			get
+			{
+				return this._idUser;
+			}
+			set
+			{
+				if ((this._idUser != value))
+				{
+					if (this._TM_Usuario.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidUserChanging(value);
+					this.SendPropertyChanging();
+					this._idUser = value;
+					this.SendPropertyChanged("idUser");
+					this.OnidUserChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_url_login", DbType="NVarChar(250)")]
+		public string url_login
+		{
+			get
+			{
+				return this._url_login;
+			}
+			set
+			{
+				if ((this._url_login != value))
+				{
+					this.Onurl_loginChanging(value);
+					this.SendPropertyChanging();
+					this._url_login = value;
+					this.SendPropertyChanged("url_login");
+					this.Onurl_loginChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_createBy", DbType="NVarChar(25)")]
+		public string createBy
+		{
+			get
+			{
+				return this._createBy;
+			}
+			set
+			{
+				if ((this._createBy != value))
+				{
+					this.OncreateByChanging(value);
+					this.SendPropertyChanging();
+					this._createBy = value;
+					this.SendPropertyChanged("createBy");
+					this.OncreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_modifyBy", DbType="NVarChar(25)")]
+		public string modifyBy
+		{
+			get
+			{
+				return this._modifyBy;
+			}
+			set
+			{
+				if ((this._modifyBy != value))
+				{
+					this.OnmodifyByChanging(value);
+					this.SendPropertyChanging();
+					this._modifyBy = value;
+					this.SendPropertyChanged("modifyBy");
+					this.OnmodifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cancelBy", DbType="NVarChar(25)")]
+		public string cancelBy
+		{
+			get
+			{
+				return this._cancelBy;
+			}
+			set
+			{
+				if ((this._cancelBy != value))
+				{
+					this.OncancelByChanging(value);
+					this.SendPropertyChanging();
+					this._cancelBy = value;
+					this.SendPropertyChanged("cancelBy");
+					this.OncancelByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecCreate", DbType="Date")]
+		public System.Nullable<System.DateTime> fecCreate
+		{
+			get
+			{
+				return this._fecCreate;
+			}
+			set
+			{
+				if ((this._fecCreate != value))
+				{
+					this.OnfecCreateChanging(value);
+					this.SendPropertyChanging();
+					this._fecCreate = value;
+					this.SendPropertyChanged("fecCreate");
+					this.OnfecCreateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecModify", DbType="Date")]
+		public System.Nullable<System.DateTime> fecModify
+		{
+			get
+			{
+				return this._fecModify;
+			}
+			set
+			{
+				if ((this._fecModify != value))
+				{
+					this.OnfecModifyChanging(value);
+					this.SendPropertyChanging();
+					this._fecModify = value;
+					this.SendPropertyChanged("fecModify");
+					this.OnfecModifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecCancel", DbType="Date")]
+		public System.Nullable<System.DateTime> fecCancel
+		{
+			get
+			{
+				return this._fecCancel;
+			}
+			set
+			{
+				if ((this._fecCancel != value))
+				{
+					this.OnfecCancelChanging(value);
+					this.SendPropertyChanging();
+					this._fecCancel = value;
+					this.SendPropertyChanged("fecCancel");
+					this.OnfecCancelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_flagActivo", DbType="Bit")]
+		public System.Nullable<bool> flagActivo
+		{
+			get
+			{
+				return this._flagActivo;
+			}
+			set
+			{
+				if ((this._flagActivo != value))
+				{
+					this.OnflagActivoChanging(value);
+					this.SendPropertyChanging();
+					this._flagActivo = value;
+					this.SendPropertyChanged("flagActivo");
+					this.OnflagActivoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TM_Usuario_TD_Login", Storage="_TM_Usuario", ThisKey="idUser", OtherKey="idUser", IsForeignKey=true)]
+		public TM_Usuario TM_Usuario
+		{
+			get
+			{
+				return this._TM_Usuario.Entity;
+			}
+			set
+			{
+				TM_Usuario previousValue = this._TM_Usuario.Entity;
+				if (((previousValue != value) 
+							|| (this._TM_Usuario.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TM_Usuario.Entity = null;
+						previousValue.TD_Login.Remove(this);
+					}
+					this._TM_Usuario.Entity = value;
+					if ((value != null))
+					{
+						value.TD_Login.Add(this);
+						this._idUser = value.idUser;
+					}
+					else
+					{
+						this._idUser = default(int);
+					}
+					this.SendPropertyChanged("TM_Usuario");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TD_RolexUsuarios")]
+	public partial class TD_RolexUsuarios : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idRolexUsuarios;
+		
+		private int _idRole;
+		
+		private int _idUser;
+		
+		private string _createBy;
+		
+		private string _modifyBy;
+		
+		private string _cancelBy;
+		
+		private System.Nullable<System.DateTime> _fecCreate;
+		
+		private System.Nullable<System.DateTime> _fecModify;
+		
+		private System.Nullable<System.DateTime> _fecCancel;
+		
+		private System.Nullable<bool> _flagActivo;
+		
+		private EntityRef<TM_Usuario> _TM_Usuario;
+		
+		private EntityRef<TM_Roles> _TM_Roles;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidRolexUsuariosChanging(int value);
+    partial void OnidRolexUsuariosChanged();
+    partial void OnidRoleChanging(int value);
+    partial void OnidRoleChanged();
+    partial void OnidUserChanging(int value);
+    partial void OnidUserChanged();
+    partial void OncreateByChanging(string value);
+    partial void OncreateByChanged();
+    partial void OnmodifyByChanging(string value);
+    partial void OnmodifyByChanged();
+    partial void OncancelByChanging(string value);
+    partial void OncancelByChanged();
+    partial void OnfecCreateChanging(System.Nullable<System.DateTime> value);
+    partial void OnfecCreateChanged();
+    partial void OnfecModifyChanging(System.Nullable<System.DateTime> value);
+    partial void OnfecModifyChanged();
+    partial void OnfecCancelChanging(System.Nullable<System.DateTime> value);
+    partial void OnfecCancelChanged();
+    partial void OnflagActivoChanging(System.Nullable<bool> value);
+    partial void OnflagActivoChanged();
+    #endregion
+		
+		public TD_RolexUsuarios()
+		{
+			this._TM_Usuario = default(EntityRef<TM_Usuario>);
+			this._TM_Roles = default(EntityRef<TM_Roles>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idRolexUsuarios", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idRolexUsuarios
+		{
+			get
+			{
+				return this._idRolexUsuarios;
+			}
+			set
+			{
+				if ((this._idRolexUsuarios != value))
+				{
+					this.OnidRolexUsuariosChanging(value);
+					this.SendPropertyChanging();
+					this._idRolexUsuarios = value;
+					this.SendPropertyChanged("idRolexUsuarios");
+					this.OnidRolexUsuariosChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idRole", DbType="Int NOT NULL")]
+		public int idRole
+		{
+			get
+			{
+				return this._idRole;
+			}
+			set
+			{
+				if ((this._idRole != value))
+				{
+					if (this._TM_Roles.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidRoleChanging(value);
+					this.SendPropertyChanging();
+					this._idRole = value;
+					this.SendPropertyChanged("idRole");
+					this.OnidRoleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUser", DbType="Int NOT NULL")]
+		public int idUser
+		{
+			get
+			{
+				return this._idUser;
+			}
+			set
+			{
+				if ((this._idUser != value))
+				{
+					if (this._TM_Usuario.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidUserChanging(value);
+					this.SendPropertyChanging();
+					this._idUser = value;
+					this.SendPropertyChanged("idUser");
+					this.OnidUserChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_createBy", DbType="NVarChar(25)")]
+		public string createBy
+		{
+			get
+			{
+				return this._createBy;
+			}
+			set
+			{
+				if ((this._createBy != value))
+				{
+					this.OncreateByChanging(value);
+					this.SendPropertyChanging();
+					this._createBy = value;
+					this.SendPropertyChanged("createBy");
+					this.OncreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_modifyBy", DbType="NVarChar(25)")]
+		public string modifyBy
+		{
+			get
+			{
+				return this._modifyBy;
+			}
+			set
+			{
+				if ((this._modifyBy != value))
+				{
+					this.OnmodifyByChanging(value);
+					this.SendPropertyChanging();
+					this._modifyBy = value;
+					this.SendPropertyChanged("modifyBy");
+					this.OnmodifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cancelBy", DbType="NVarChar(25)")]
+		public string cancelBy
+		{
+			get
+			{
+				return this._cancelBy;
+			}
+			set
+			{
+				if ((this._cancelBy != value))
+				{
+					this.OncancelByChanging(value);
+					this.SendPropertyChanging();
+					this._cancelBy = value;
+					this.SendPropertyChanged("cancelBy");
+					this.OncancelByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecCreate", DbType="Date")]
+		public System.Nullable<System.DateTime> fecCreate
+		{
+			get
+			{
+				return this._fecCreate;
+			}
+			set
+			{
+				if ((this._fecCreate != value))
+				{
+					this.OnfecCreateChanging(value);
+					this.SendPropertyChanging();
+					this._fecCreate = value;
+					this.SendPropertyChanged("fecCreate");
+					this.OnfecCreateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecModify", DbType="Date")]
+		public System.Nullable<System.DateTime> fecModify
+		{
+			get
+			{
+				return this._fecModify;
+			}
+			set
+			{
+				if ((this._fecModify != value))
+				{
+					this.OnfecModifyChanging(value);
+					this.SendPropertyChanging();
+					this._fecModify = value;
+					this.SendPropertyChanged("fecModify");
+					this.OnfecModifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecCancel", DbType="Date")]
+		public System.Nullable<System.DateTime> fecCancel
+		{
+			get
+			{
+				return this._fecCancel;
+			}
+			set
+			{
+				if ((this._fecCancel != value))
+				{
+					this.OnfecCancelChanging(value);
+					this.SendPropertyChanging();
+					this._fecCancel = value;
+					this.SendPropertyChanged("fecCancel");
+					this.OnfecCancelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_flagActivo", DbType="Bit")]
+		public System.Nullable<bool> flagActivo
+		{
+			get
+			{
+				return this._flagActivo;
+			}
+			set
+			{
+				if ((this._flagActivo != value))
+				{
+					this.OnflagActivoChanging(value);
+					this.SendPropertyChanging();
+					this._flagActivo = value;
+					this.SendPropertyChanged("flagActivo");
+					this.OnflagActivoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TM_Usuario_TD_RolexUsuarios", Storage="_TM_Usuario", ThisKey="idUser", OtherKey="idUser", IsForeignKey=true)]
+		public TM_Usuario TM_Usuario
+		{
+			get
+			{
+				return this._TM_Usuario.Entity;
+			}
+			set
+			{
+				TM_Usuario previousValue = this._TM_Usuario.Entity;
+				if (((previousValue != value) 
+							|| (this._TM_Usuario.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TM_Usuario.Entity = null;
+						previousValue.TD_RolexUsuarios.Remove(this);
+					}
+					this._TM_Usuario.Entity = value;
+					if ((value != null))
+					{
+						value.TD_RolexUsuarios.Add(this);
+						this._idUser = value.idUser;
+					}
+					else
+					{
+						this._idUser = default(int);
+					}
+					this.SendPropertyChanged("TM_Usuario");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TM_Roles_TD_RolexUsuarios", Storage="_TM_Roles", ThisKey="idRole", OtherKey="idRoles", IsForeignKey=true)]
+		public TM_Roles TM_Roles
+		{
+			get
+			{
+				return this._TM_Roles.Entity;
+			}
+			set
+			{
+				TM_Roles previousValue = this._TM_Roles.Entity;
+				if (((previousValue != value) 
+							|| (this._TM_Roles.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TM_Roles.Entity = null;
+						previousValue.TD_RolexUsuarios.Remove(this);
+					}
+					this._TM_Roles.Entity = value;
+					if ((value != null))
+					{
+						value.TD_RolexUsuarios.Add(this);
+						this._idRole = value.idRoles;
+					}
+					else
+					{
+						this._idRole = default(int);
+					}
+					this.SendPropertyChanged("TM_Roles");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TM_Roles")]
+	public partial class TM_Roles : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idRoles;
+		
+		private string _Descrpcion;
+		
+		private string _createBy;
+		
+		private string _modifyBy;
+		
+		private string _cancelBy;
+		
+		private System.Nullable<System.DateTime> _fecCreate;
+		
+		private System.Nullable<System.DateTime> _fecModify;
+		
+		private System.Nullable<System.DateTime> _fecCancel;
+		
+		private System.Nullable<bool> _flagActivo;
+		
+		private EntitySet<TD_RolexUsuarios> _TD_RolexUsuarios;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidRolesChanging(int value);
+    partial void OnidRolesChanged();
+    partial void OnDescrpcionChanging(string value);
+    partial void OnDescrpcionChanged();
+    partial void OncreateByChanging(string value);
+    partial void OncreateByChanged();
+    partial void OnmodifyByChanging(string value);
+    partial void OnmodifyByChanged();
+    partial void OncancelByChanging(string value);
+    partial void OncancelByChanged();
+    partial void OnfecCreateChanging(System.Nullable<System.DateTime> value);
+    partial void OnfecCreateChanged();
+    partial void OnfecModifyChanging(System.Nullable<System.DateTime> value);
+    partial void OnfecModifyChanged();
+    partial void OnfecCancelChanging(System.Nullable<System.DateTime> value);
+    partial void OnfecCancelChanged();
+    partial void OnflagActivoChanging(System.Nullable<bool> value);
+    partial void OnflagActivoChanged();
+    #endregion
+		
+		public TM_Roles()
+		{
+			this._TD_RolexUsuarios = new EntitySet<TD_RolexUsuarios>(new Action<TD_RolexUsuarios>(this.attach_TD_RolexUsuarios), new Action<TD_RolexUsuarios>(this.detach_TD_RolexUsuarios));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idRoles", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idRoles
+		{
+			get
+			{
+				return this._idRoles;
+			}
+			set
+			{
+				if ((this._idRoles != value))
+				{
+					this.OnidRolesChanging(value);
+					this.SendPropertyChanging();
+					this._idRoles = value;
+					this.SendPropertyChanged("idRoles");
+					this.OnidRolesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descrpcion", DbType="NVarChar(50)")]
+		public string Descrpcion
+		{
+			get
+			{
+				return this._Descrpcion;
+			}
+			set
+			{
+				if ((this._Descrpcion != value))
+				{
+					this.OnDescrpcionChanging(value);
+					this.SendPropertyChanging();
+					this._Descrpcion = value;
+					this.SendPropertyChanged("Descrpcion");
+					this.OnDescrpcionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_createBy", DbType="NVarChar(25)")]
+		public string createBy
+		{
+			get
+			{
+				return this._createBy;
+			}
+			set
+			{
+				if ((this._createBy != value))
+				{
+					this.OncreateByChanging(value);
+					this.SendPropertyChanging();
+					this._createBy = value;
+					this.SendPropertyChanged("createBy");
+					this.OncreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_modifyBy", DbType="NVarChar(25)")]
+		public string modifyBy
+		{
+			get
+			{
+				return this._modifyBy;
+			}
+			set
+			{
+				if ((this._modifyBy != value))
+				{
+					this.OnmodifyByChanging(value);
+					this.SendPropertyChanging();
+					this._modifyBy = value;
+					this.SendPropertyChanged("modifyBy");
+					this.OnmodifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cancelBy", DbType="NVarChar(25)")]
+		public string cancelBy
+		{
+			get
+			{
+				return this._cancelBy;
+			}
+			set
+			{
+				if ((this._cancelBy != value))
+				{
+					this.OncancelByChanging(value);
+					this.SendPropertyChanging();
+					this._cancelBy = value;
+					this.SendPropertyChanged("cancelBy");
+					this.OncancelByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecCreate", DbType="Date")]
+		public System.Nullable<System.DateTime> fecCreate
+		{
+			get
+			{
+				return this._fecCreate;
+			}
+			set
+			{
+				if ((this._fecCreate != value))
+				{
+					this.OnfecCreateChanging(value);
+					this.SendPropertyChanging();
+					this._fecCreate = value;
+					this.SendPropertyChanged("fecCreate");
+					this.OnfecCreateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecModify", DbType="Date")]
+		public System.Nullable<System.DateTime> fecModify
+		{
+			get
+			{
+				return this._fecModify;
+			}
+			set
+			{
+				if ((this._fecModify != value))
+				{
+					this.OnfecModifyChanging(value);
+					this.SendPropertyChanging();
+					this._fecModify = value;
+					this.SendPropertyChanged("fecModify");
+					this.OnfecModifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecCancel", DbType="Date")]
+		public System.Nullable<System.DateTime> fecCancel
+		{
+			get
+			{
+				return this._fecCancel;
+			}
+			set
+			{
+				if ((this._fecCancel != value))
+				{
+					this.OnfecCancelChanging(value);
+					this.SendPropertyChanging();
+					this._fecCancel = value;
+					this.SendPropertyChanged("fecCancel");
+					this.OnfecCancelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_flagActivo", DbType="Bit")]
+		public System.Nullable<bool> flagActivo
+		{
+			get
+			{
+				return this._flagActivo;
+			}
+			set
+			{
+				if ((this._flagActivo != value))
+				{
+					this.OnflagActivoChanging(value);
+					this.SendPropertyChanging();
+					this._flagActivo = value;
+					this.SendPropertyChanged("flagActivo");
+					this.OnflagActivoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TM_Roles_TD_RolexUsuarios", Storage="_TD_RolexUsuarios", ThisKey="idRoles", OtherKey="idRole")]
+		public EntitySet<TD_RolexUsuarios> TD_RolexUsuarios
+		{
+			get
+			{
+				return this._TD_RolexUsuarios;
+			}
+			set
+			{
+				this._TD_RolexUsuarios.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_TD_RolexUsuarios(TD_RolexUsuarios entity)
+		{
+			this.SendPropertyChanging();
+			entity.TM_Roles = this;
+		}
+		
+		private void detach_TD_RolexUsuarios(TD_RolexUsuarios entity)
+		{
+			this.SendPropertyChanging();
+			entity.TM_Roles = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vw_Usuarios")]
+	public partial class vw_Usuarios
+	{
+		
+		private int _codUsuario;
+		
+		private string _nomUsuario;
+		
+		private System.Nullable<bool> _Estatususuario;
+		
+		private string _perfilusuario;
+		
+		private System.Nullable<bool> _Estatuslogin;
+		
+		public vw_Usuarios()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codUsuario", DbType="Int NOT NULL")]
+		public int codUsuario
+		{
+			get
+			{
+				return this._codUsuario;
+			}
+			set
+			{
+				if ((this._codUsuario != value))
+				{
+					this._codUsuario = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nomUsuario", DbType="NVarChar(30)")]
+		public string nomUsuario
+		{
+			get
+			{
+				return this._nomUsuario;
+			}
+			set
+			{
+				if ((this._nomUsuario != value))
+				{
+					this._nomUsuario = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estatususuario", DbType="Bit")]
+		public System.Nullable<bool> Estatususuario
+		{
+			get
+			{
+				return this._Estatususuario;
+			}
+			set
+			{
+				if ((this._Estatususuario != value))
+				{
+					this._Estatususuario = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perfilusuario", DbType="NVarChar(250)")]
+		public string perfilusuario
+		{
+			get
+			{
+				return this._perfilusuario;
+			}
+			set
+			{
+				if ((this._perfilusuario != value))
+				{
+					this._perfilusuario = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estatuslogin", DbType="Bit")]
+		public System.Nullable<bool> Estatuslogin
+		{
+			get
+			{
+				return this._Estatuslogin;
+			}
+			set
+			{
+				if ((this._Estatuslogin != value))
+				{
+					this._Estatuslogin = value;
+				}
+			}
 		}
 	}
 }

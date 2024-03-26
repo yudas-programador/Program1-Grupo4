@@ -231,4 +231,74 @@
       <Association Name="TM_Proyecto_TD_Rentabilidad" Member="TD_Rentabilidad" ThisKey="ID_Proyecto" OtherKey="ID_proyecto" Type="TD_Rentabilidad" />
     </Type>
   </Table>
+  <Table Name="dbo.TM_Usuario" Member="TM_Usuario">
+    <Type Name="TM_Usuario">
+      <Column Name="idUser" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="PasswordUser" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="createBy" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="modifyBy" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="cancelBy" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="fecCreate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="fecModify" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="fecCancel" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="flagActivo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="TM_Usuario_TD_Login" Member="TD_Login" ThisKey="idUser" OtherKey="idUser" Type="TD_Login" />
+      <Association Name="TM_Usuario_TD_RolexUsuarios" Member="TD_RolexUsuarios" ThisKey="idUser" OtherKey="idUser" Type="TD_RolexUsuarios" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TD_Login" Member="TD_Login">
+    <Type Name="TD_Login">
+      <Column Name="idLogin" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idUser" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="url_login" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="createBy" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="modifyBy" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="cancelBy" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="fecCreate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="fecModify" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="fecCancel" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="flagActivo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="TM_Usuario_TD_Login" Member="TM_Usuario" ThisKey="idUser" OtherKey="idUser" Type="TM_Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TD_RolexUsuarios" Member="TD_RolexUsuarios">
+    <Type Name="TD_RolexUsuarios">
+      <Column Name="idRolexUsuarios" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idRole" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idUser" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="createBy" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="modifyBy" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="cancelBy" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="fecCreate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="fecModify" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="fecCancel" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="flagActivo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="TM_Usuario_TD_RolexUsuarios" Member="TM_Usuario" ThisKey="idUser" OtherKey="idUser" Type="TM_Usuario" IsForeignKey="true" />
+      <Association Name="TM_Roles_TD_RolexUsuarios" Member="TM_Roles" ThisKey="idRole" OtherKey="idRoles" Type="TM_Roles" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TM_Roles" Member="TM_Roles">
+    <Type Name="TM_Roles">
+      <Column Name="idRoles" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Descrpcion" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="createBy" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="modifyBy" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="cancelBy" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="fecCreate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="fecModify" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="fecCancel" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="flagActivo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="TM_Roles_TD_RolexUsuarios" Member="TD_RolexUsuarios" ThisKey="idRoles" OtherKey="idRole" Type="TD_RolexUsuarios" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_Usuarios" Member="vw_Usuarios">
+    <Type Name="vw_Usuarios">
+      <Column Name="codUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nomUsuario" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Estatususuario" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="perfilusuario" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Estatuslogin" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>
