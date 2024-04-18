@@ -2,32 +2,208 @@
     ViewBag.Title = "Home Page";
 }
 
-<main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proveedor de Turismo</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('../../content/pictures/imagen fondo2.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 5px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex; /* Usar flexbox */
+            justify-content: center; /* Centrar horizontalmente */
+        }
+
+            nav ul li {
+                display: inline;
+                margin-right: 20px;
+            }
+
+                nav ul li a {
+                    color: #fff;
+                    text-decoration: none;
+                }
+
+        section {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Estilo para los cuadros */
+        .cuadro {
+            width: calc(33.33% - 35px);
+            height: 320px;
+            margin: 10px;
+            padding: 20px;
+            display: inline-block;
+            vertical-align: top;
+            box-sizing: border-box;
+        }
+
+        .rojo {
+            background-color: rgb(184, 165, 165);
+        }
+
+        .Diseno {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .otro {
+            border: 3px red solid;
+        }
+
+        .padre {
+            border: 3px red solid;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cuadro rojo -->
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <img src="~/Content/Pictures/logo2.png"
+                         width="40"
+                         height="40" />
+                </li>
+                <div class="Diseno">
+                <li><a href="#paquetes">Paquetes Turísticos</a></li>
+                <li><a href="#precios">Precios y Disponibilidad</a></li>
+                <li><a href="#reservas">Reservas</a></li>
+                <li><a href="#estadisticas">Estadísticas y Reportes</a></li>
+                <li><a href="#condiciones">Condiciones y Términos</a></li>
+                <li><a href="#gestion">Gestión de Reservas</a></li>
+                <li>
+                    <a href="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z" />
+                            <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                        </svg>
+                    </a>
+                </li>
+                </div>
+
+            </ul>
+        </nav>
+    </header>
+
+    <section id="pequetes">
+        <center><h1>Paquetes Turísticos</h1></center>
+        <!-- Contenido sobre los servicios -->
+        <div class="cuadro rojo">
+            <center>
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-1-circle" viewBox="0 0 16 16">
+                    <path d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M9.283 4.002V12H7.971V5.338h-.065L6.072 6.656V5.385l1.899-1.383z" />
+                </svg>
+            </center>
+            <center><h2>Básico</h2></center>
+            <p><strong>Destino: </strong>Las Terrenas, Rep. Dom</p>
+            <p><strong>Duración: </strong> 4 días / 3 noches </p>
+            <p>
+                <strong>Actividades: </strong> <ul>
+                    <li>Días libres en la playa de Playa Bonita</li>
+                    <li>Visita al Pueblo de Pescadores</li>
+                    <li>Excursión en bote a Cayo Levantado</li>
+                </ul>
+            </p>
+            <p><strong>Precio:</strong> $250 por persona </p>
+        </div>
+        <div class="cuadro rojo">
+            <center><h2>Regular </h2></center>
+            <p><strong>Destino: </strong>PSamaná, Rep. Dom</p>
+            <p><strong>Duración: </strong> 6 días / 5 noches </p>
+            <p>
+                <strong>Actividades: </strong> <ul>
+                    <li>TExcursión al Parque Nacional Los Haitises</li>
+                    <li>Avistamiento de ballenas jorobadas (en temporada)</li>
+                    <li>Trekking en el Sendero El Limón</li>
+                    <li>Días de playa en Playa Rincón</a></li>
+                </ul>
+            </p>
+            <p><strong>Precio:</strong> $500 por persona </p>
+        </div>
+        <div class="cuadro rojo">
+            <center><h2>Premium</h2></center>
+            <p><strong>Destino: </strong>Punta Cana, Rep. Dom</p>
+            <p><strong>Duración: </strong> 8 días / 7 noches </p>
+            <p>
+                <strong>Actividades: </strong> <ul>
+                    <li>Estadía en un resort de 5 estrellas con régimen de todo incluido</li>
+                    <li>Tour en helicóptero sobre la costa de Punta Cana</li>
+                    <li>Cena romántica en la playa con chef privado</li>
+                    <li>Masaje en el spa del resort</a></li>
+                </ul>
+            </p>
+            <p><strong>Precio:</strong> $1200 por persona </p>
+        </div>
     </section>
 
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
-    </div>
-</main>
+    <section id="precios">
+        <h2>Precios y Disponibilidad</h2>
+        <!-- Contenido para proveedores -->
+    </section>
+
+    <section id="reservas">
+        <h2>Estadísticas y Reportes</h2>
+        <!-- Contenido de testimonios -->
+    </section>
+
+    <section id="estadisticas">
+        <h2>Estadísticas y Reportes</h2>
+        <!-- Contenido del blog/noticias -->
+    </section>
+
+    <section id="condiciones">
+        <h2>Promociones y Ofertas Especiales</h2>
+        <!-- Formulario de contacto -->
+    </section>
+
+    <section id="gestion">
+        <h2>Promociones y Ofertas Especiales</h2>
+        <!-- Formulario de contacto -->
+    </section>
+
+    <section id="Log off">
+        <h2>Promociones y Ofertas Especiales</h2>
+        <!-- Formulario de contacto -->
+    </section>
+
+    <footer>
+        <ul>
+            <li><a href="#">Política de Privacidad</a></li>
+            <li><a href="#">Términos de Servicio</a></li>
+            <li><a href="#">Redes Sociales</a></li>
+        </ul>
+        <p>Derechos de autor © 2024 Proveedor de Turismo. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

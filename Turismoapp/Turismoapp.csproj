@@ -147,7 +147,9 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\css\cssregistro.css" />
     <Content Include="Content\css\csslogin.css" />
+    <Content Include="Content\Pictures\headerlogo.jpeg" />
     <Content Include="Content\Pictures\imagen fondo2.jpeg" />
+    <Content Include="Content\Pictures\Imagenfondo3.jpeg" />
     <Content Include="Content\Pictures\logo2.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -273,15 +275,11 @@
   </Target>
   <Target Name="AfterBuild">
   </Target> -->
-
-<Target Name="CopyRoslynFiles" AfterTargets="AfterBuild" Condition="!$(Disable_CopyWebApplication) And '$(OutDir)' != '$(OutputPath)'">
+  <Target Name="CopyRoslynFiles" AfterTargets="AfterBuild" Condition="!$(Disable_CopyWebApplication) And '$(OutDir)' != '$(OutputPath)'">
     <ItemGroup>
       <RoslynFiles Include="$(CscToolPath)\*" />
     </ItemGroup>
     <MakeDir Directories="$(WebProjectOutputDir)\bin\roslyn" />
     <Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
-</Target>
-
-
+  </Target>
 </Project>
-
